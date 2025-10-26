@@ -1,248 +1,399 @@
 // ===================================
-// MAIN JAVASCRIPT - GITHUB PAGES READY
+// MAIN JAVASCRIPT
 // ===================================
 
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // Initialize AOS
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 50,
-        });
-    }
-
-    // ===================================
-    // PRELOADER
-    // ===================================
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 1000);
-        });
-    }
-
-    // ===================================
-    // NAVBAR SCROLL
-    // ===================================
-    const navbar = document.getElementById('navbar');
-    if (navbar && !navbar.classList.contains('scrolled')) {
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    }
-
-    // ===================================
-    // MOBILE MENU
-    // ===================================
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navMenu = document.getElementById('navMenu');
-
-    if (mobileToggle && navMenu) {
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
-
-    // ===================================
-    // HERO SLIDER
-    // ===================================
-    const heroSlides = document.querySelectorAll('.hero-slide');
-    if (heroSlides.length > 1) {
-        let currentSlide = 0;
-        
-        setInterval(() => {
-            heroSlides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % heroSlides.length;
-            heroSlides[currentSlide].classList.add('active');
-        }, 4000);
-    }
-
-    // ===================================
-    // COUNTER ANIMATION
-    // ===================================
-    const counters = document.querySelectorAll('.stat-number');
-    
-    const animateCounter = (element) => {
-        const target = parseInt(element.getAttribute('data-count'));
-        const duration = 2000;
-        const increment = target / (duration / 16);
-        let current = 0;
-        
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                element.textContent = target.toLocaleString();
-                clearInterval(timer);
-            } else {
-                element.textContent = Math.floor(current).toLocaleString();
-            }
-        }, 16);
-    };
-
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                animateCounter(entry.target);
-                entry.target.classList.add('counted');
-            }
-        });
-    }, observerOptions);
-
-    counters.forEach(counter => observer.observe(counter));
-
-    // ===================================
-    // GALLERY FILTER
-    // ===================================
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const filter = btn.getAttribute('data-filter');
-            
-            galleryItems.forEach(item => {
-                const category = item.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // ===================================
-    // SCROLL TO TOP
-    // ===================================
-    const scrollTop = document.getElementById('scrollTop');
-    
-    if (scrollTop) {
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
-
-        scrollTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
-
-    // ===================================
-    // BOOKING FORM
-    // ===================================
-    const bookingForm = document.getElementById('bookingForm');
-    
-    if (bookingForm) {
-        const WHATSAPP_NUMBER = '919990232499';
-        
-        // Set min date to today
-        const dateInput = document.getElementById('date');
-        if (dateInput) {
-            const today = new Date().toISOString().split('T')[0];
-            dateInput.min = today;
-        }
-
-        bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('name').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            const date = document.getElementById('date').value;
-            const time = document.getElementById('time').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message') ? document.getElementById('message').value.trim() : '';
-            
-            if (!name || !phone || !date || !time || !service) {
-                alert('Please fill in all required fields');
-                return;
-            }
-            
-            const dateObj = new Date(date);
-            const formattedDate = dateObj.toLocaleDateString('en-IN', {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-            });
-            
-            const timeObj = new Date(`2000-01-01T${time}`);
-            const formattedTime = timeObj.toLocaleTimeString('en-IN', {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-            });
-            
-            let whatsappMessage = `✨ *NEW APPOINTMENT REQUEST* ✨\n\n`;
-            whatsappMessage += `👤 *Name:* ${name}\n`;
-            whatsappMessage += `📱 *Phone:* ${phone}\n`;
-            whatsappMessage += `📅 *Date:* ${formattedDate}\n`;
-            whatsappMessage += `⏰ *Time:* ${formattedTime}\n`;
-            whatsappMessage += `💇 *Service:* ${service}\n`;
-            
-            if (message) {
-                whatsappMessage += `\n💬 *Message:* ${message}\n`;
-            }
-            
-            whatsappMessage += `\n✅ Please confirm my appointment.`;
-            
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-            
-            window.open(whatsappURL, '_blank');
-            
-            setTimeout(() => {
-                bookingForm.reset();
-            }, 1000);
-        });
-    }
-
-    // ===================================
-    // SMOOTH SCROLL
-    // ===================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href !== '#' && document.querySelector(href)) {
-                e.preventDefault();
-                document.querySelector(href).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-    console.log('✅ Dev Hair Colourist Salon - Website Loaded Successfully!');
+// Initialize AOS (Animate On Scroll)
+AOS.init({
+    duration: 1000,
+    easing: 'ease-out-cubic',
+    once: false,
+    mirror: true,
+    offset: 100,
 });
+
+// ===================================
+// PRELOADER
+// ===================================
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }, 1500);
+});
+
+// ===================================
+// NAVBAR SCROLL EFFECT
+// ===================================
+
+const navbar = document.getElementById('navbar');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+});
+
+// ===================================
+// MOBILE MENU TOGGLE
+// ===================================
+
+const mobileToggle = document.getElementById('mobileToggle');
+const navMenu = document.getElementById('navMenu');
+
+mobileToggle.addEventListener('click', () => {
+    mobileToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : 'auto';
+});
+
+// Close menu when clicking on a link
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        mobileToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
+});
+
+// ===================================
+// HERO SLIDER (SWIPER)
+// ===================================
+
+const heroSwiper = new Swiper('.hero-swiper', {
+    loop: true,
+    autoplay: {
+        delay: 2000, // 2 seconds per slide
+        disableOnInteraction: false,
+    },
+    speed: 1500, // Transition speed
+    effect: 'fade',
+    fadeEffect: {
+        crossFade: true
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+// ===================================
+// TESTIMONIALS SLIDER
+// ===================================
+
+const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+    loop: true,
+    autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+    },
+    speed: 800,
+    spaceBetween: 30,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+    breakpoints: {
+        768: {
+            slidesPerView: 2,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});
+
+// ===================================
+// SCROLL TO TOP BUTTON
+// ===================================
+
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('visible');
+    } else {
+        scrollToTopBtn.classList.remove('visible');
+    }
+});
+
+scrollToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
+
+// ===================================
+// GSAP SCROLL ANIMATIONS
+// ===================================
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Parallax effect on images
+gsap.utils.toArray('.welcome-img').forEach(img => {
+    gsap.to(img, {
+        yPercent: -10,
+        ease: "none",
+        scrollTrigger: {
+            trigger: img,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+        },
+    });
+});
+
+// Service cards stagger animation
+gsap.from('.service-card', {
+    scrollTrigger: {
+        trigger: '.services-grid',
+        start: 'top 80%',
+    },
+    y: 100,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: 'power3.out'
+});
+
+// Section titles animation
+gsap.utils.toArray('.section-title').forEach(title => {
+    const splitTitle = new SplitText(title, { type: 'words' });
+    
+    gsap.from(splitTitle.words, {
+        scrollTrigger: {
+            trigger: title,
+            start: 'top 85%',
+        },
+        opacity: 0,
+        y: 50,
+        rotationX: -90,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: 'back.out(1.7)'
+    });
+});
+
+// Counter animation
+function animateCounter(element, target, duration = 2000) {
+    let current = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
+
+// Trigger counter on scroll
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px'
+};
+
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const number = entry.target.querySelector('.badge-number');
+            if (number && !number.classList.contains('counted')) {
+                const target = parseInt(number.textContent);
+                number.textContent = '0';
+                animateCounter(number, target);
+                number.classList.add('counted');
+            }
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.experience-badge').forEach(badge => {
+    counterObserver.observe(badge);
+});
+
+// ===================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ===================================
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// ===================================
+// LAZY LOADING IMAGES
+// ===================================
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+            observer.unobserve(img);
+        }
+    });
+});
+
+document.querySelectorAll('img[data-src]').forEach(img => {
+    imageObserver.observe(img);
+});
+
+// ===================================
+// FORM VALIDATION (for contact/booking)
+// ===================================
+
+function validateForm(form) {
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
+    let isValid = true;
+    
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('error');
+        } else {
+            input.classList.remove('error');
+        }
+    });
+    
+    return isValid;
+}
+
+// ===================================
+// CURSOR ANIMATION (Optional Premium Effect)
+// ===================================
+
+const cursor = document.createElement('div');
+cursor.className = 'custom-cursor';
+document.body.appendChild(cursor);
+
+const cursorFollower = document.createElement('div');
+cursorFollower.className = 'cursor-follower';
+document.body.appendChild(cursorFollower);
+
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    cursor.style.left = mouseX + 'px';
+    cursor.style.top = mouseY + 'px';
+});
+
+function animateCursor() {
+    const distX = mouseX - cursorX;
+    const distY = mouseY - cursorY;
+    
+    cursorX += distX * 0.1;
+    cursorY += distY * 0.1;
+    
+    cursorFollower.style.left = cursorX + 'px';
+    cursorFollower.style.top = cursorY + 'px';
+    
+    requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+// Cursor hover effects
+document.querySelectorAll('a, button, .service-card, .gallery-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+        cursorFollower.classList.add('hover');
+    });
+    
+    el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+        cursorFollower.classList.remove('hover');
+    });
+});
+
+// Add custom cursor styles
+const cursorStyles = `
+.custom-cursor {
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.2s;
+}
+
+.custom-cursor.hover {
+    transform: scale(2);
+}
+
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    opacity: 0.5;
+    transition: transform 0.3s;
+}
+
+.cursor-follower.hover {
+    transform: scale(1.5);
+}
+`;
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = cursorStyles;
+document.head.appendChild(styleSheet);
+
+// ===================================
+// PERFORMANCE OPTIMIZATION
+// ===================================
+
+// Debounce function
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Optimized scroll handler
+const optimizedScroll = debounce(() => {
+    // Your scroll logic here
+}, 10);
+
+window.addEventListener('scroll', optimizedScroll);
+
+console.log('🎨 Dev Hair Colourist Salon - Website Loaded Successfully!');
