@@ -1,0 +1,471 @@
+/* ===================================
+   RESPONSIVE STYLES
+   =================================== */
+
+/* Large Tablets & Small Desktops */
+@media (max-width: 1200px) {
+    :root {
+        --section-padding: 80px 0;
+    }
+    
+    .container {
+        max-width: 960px;
+    }
+    
+    .section-title {
+        font-size: 42px;
+    }
+    
+    .hero-title {
+        font-size: 64px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 991px) {
+    :root {
+        --section-padding: 60px 0;
+    }
+    
+    .container {
+        max-width: 720px;
+    }
+    
+    /* Navigation */
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .logo-svg {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .logo-title {
+        font-size: 20px;
+    }
+    
+    .logo-subtitle {
+        font-size: 10px;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 48px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    /* Services Grid */
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    /* Why Choose Grid */
+    .why-choose-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Gallery */
+    .gallery-masonry {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gallery-masonry-item.wide,
+    .gallery-masonry-item.tall {
+        grid-column: span 1;
+        grid-row: span 1;
+        aspect-ratio: 1;
+    }
+    
+    /* Team Grid */
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Landscape & Large Phones */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 50px 0;
+    }
+    
+    .container {
+        max-width: 540px;
+        padding: 0 15px;
+    }
+    
+    /* Typography */
+    .section-title {
+        font-size: 32px;
+    }
+    
+    .section-subtitle {
+        font-size: 12px;
+    }
+    
+    .section-description {
+        font-size: 15px;
+    }
+    
+    /* Page Header */
+    .page-header {
+        padding: 120px 0 60px;
+    }
+    
+    .page-title {
+        font-size: 36px;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .btn-lg {
+        padding: 14px 30px;
+        font-size: 14px;
+    }
+    
+    /* Buttons */
+    .btn-primary,
+    .btn-secondary {
+        padding: 12px 25px;
+        font-size: 13px;
+    }
+    
+    /* Services */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-card {
+        margin-bottom: 20px;
+    }
+    
+    /* Why Choose */
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Gallery */
+    .gallery-masonry {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .gallery-filters {
+        gap: 10px;
+    }
+    
+    .filter-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    
+    /* Team */
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-stats {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+    
+    /* Blog */
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+    
+    .featured-post .blog-content {
+        padding: 30px 20px;
+    }
+    
+    /* Contact */
+    .contact-info-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-form-section {
+        padding: 30px 20px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer {
+        padding: 60px 0 20px;
+    }
+    
+    /* Story Stats */
+    .story-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Mission Cards */
+    .mission-card {
+        padding: 30px 20px;
+    }
+    
+    /* Values Grid */
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Awards Grid */
+    .awards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Process Timeline */
+    .process-timeline {
+        padding: 0;
+    }
+    
+    .process-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    /* Booking Form */
+    .booking-card {
+        padding: 30px 20px;
+    }
+    
+    /* Floating Buttons */
+    .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 28px;
+    }
+    
+    .scroll-to-top {
+        width: 45px;
+        height: 45px;
+        bottom: 20px;
+        left: 20px;
+    }
+    
+    /* Testimonials */
+    .testimonials-swiper {
+        padding: 10px 0 50px;
+    }
+    
+    .testimonial-card {
+        padding: 30px 20px;
+    }
+    
+    /* CTA Section */
+    .cta-title {
+        font-size: 32px;
+    }
+    
+    .cta-subtitle {
+        font-size: 16px;
+    }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 480px) {
+    /* Typography */
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .page-title {
+        font-size: 32px;
+    }
+    
+    /* Logo */
+    .logo-svg {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .logo-title {
+        font-size: 18px;
+    }
+    
+    .logo-subtitle {
+        font-size: 9px;
+    }
+    
+    /* Buttons */
+    .btn-primary,
+    .btn-secondary {
+        padding: 10px 20px;
+        font-size: 12px;
+    }
+    
+    .btn-lg {
+        padding: 12px 25px;
+    }
+    
+    /* Stats */
+    .story-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+    
+    /* Awards */
+    .awards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Testimonials */
+    .testimonial-text {
+        font-size: 16px;
+    }
+    
+    /* Map */
+    .map-container {
+        height: 350px;
+    }
+    
+    /* Working Hours */
+    .hours-item {
+        font-size: 14px;
+    }
+    
+    /* Newsletter */
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-form input {
+        width: 100%;
+    }
+    
+    /* Before/After Slider */
+    .before-after-slider {
+        height: 300px;
+    }
+    
+    .before-label,
+    .after-label {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+}
+
+/* Extra Small Devices */
+@media (max-width: 375px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .service-card,
+    .why-card,
+    .blog-card {
+        margin-bottom: 15px;
+    }
+}
+
+/* Landscape Mode Adjustments */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero-section {
+        min-height: 500px;
+    }
+    
+    .page-header {
+        padding: 100px 0 50px;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .whatsapp-float,
+    .scroll-to-top,
+    .preloader,
+    .mobile-toggle,
+    .footer {
+        display: none;
+    }
+    
+    .page-content {
+        padding: 0;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+    
+    * {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .logo-svg,
+    .service-icon,
+    .why-icon {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+    /* Add dark mode styles if needed */
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
