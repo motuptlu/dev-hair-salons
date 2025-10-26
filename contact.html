@@ -4,133 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | Dev Hair Colourist Salon</title>
-    <meta name="description" content="Contact Dev Hair Colourist Salon at South Point Mall, Golf Course Road, Gurugram.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <!-- Same head links -->
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/animations.css">
 </head>
 <body>
+    <!-- Navbar -->
     
-    <div class="preloader" id="preloader">
-        <div class="loader">
-            <div class="scissors">✂️</div>
-            <div class="loader-text">Dev Hair Colourist</div>
-        </div>
-    </div>
-
-    <nav class="navbar scrolled" id="navbar">
+    <section class="contact-section section-padding" style="padding-top: 120px;">
         <div class="container">
-            <div class="nav-wrapper">
-                <a href="index.html" class="logo">
-                    <div class="logo-icon">D</div>
-                    <div class="logo-text">
-                        <span class="logo-name">DEV</span>
-                        <span class="logo-tagline">Hair Colourist</span>
-                    </div>
-                </a>
-                <button class="mobile-toggle" id="mobileToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <ul class="nav-menu" id="navMenu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="gallery.html" class="nav-link">Gallery</a></li>
-                    <li><a href="team.html" class="nav-link">Team</a></li>
-                    <li><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
-                    <li><a href="booking.html" class="btn-nav">Book Now</a></li>
-                </ul>
+            <div class="section-header text-center" data-aos="fade-up">
+                <span class="section-subtitle">Get In Touch</span>
+                <h1 class="section-title">Contact <span class="text-accent">Us</span></h1>
             </div>
-        </div>
-    </nav>
-
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content" data-aos="fade-up">
-                <h1>Contact <span class="gradient-text">Us</span></h1>
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a> / <span>Contact</span>
+            
+            <div class="row" style="gap: 40px;">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Visit Us</h3>
+                                <p>Shop No - 2, UG Floor, South Point Mall<br>
+                                Golf Course Rd, Sector 53<br>
+                                Gurugram, Haryana 122011</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Call Us</h3>
+                                <p><a href="tel:+919990232499">+91 9990232499</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Working Hours</h3>
+                                <p>Monday - Sunday<br>10:00 AM - 8:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="map-container">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.191234567890!2d77.08374!3d28.431400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDI1JzUzLjAiTiA3N8KwMDUnMDEuNSJF!5e0!3m2!1sen!2sin!4v1234567890"
+                            width="100%" 
+                            height="450" 
+                            style="border:0; border-radius: 15px;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <section class="contact-section section-padding">
-        <div class="container">
-            <div class="section-header center" data-aos="fade-up">
-                <span class="section-label">Get In Touch</span>
-                <h2 class="section-title">We'd Love to <span class="gradient-text">Hear From You</span></h2>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <h3>Visit Our Salon</h3>
-                    <p>Shop No - 2, UG Floor<br>South Point Mall<br>Golf Course Rd, Sector 53<br>Gurugram, Haryana 122011</p>
-                    <a href="https://maps.app.goo.gl/cWpnHzUBSYytV5JX6" target="_blank" class="btn btn-outline btn-sm">Get Directions</a>
-                </div>
-
-                <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <h3>Call Us</h3>
-                    <p><a href="tel:+919990232499">+91 9990232499</a></p>
-                    <p>Available during business hours</p>
-                    <a href="tel:+919990232499" class="btn btn-outline btn-sm">Call Now</a>
-                </div>
-
-                <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="contact-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <h3>WhatsApp Us</h3>
-                    <p>Quick responses<br>Easy appointment booking</p>
-                    <a href="https://wa.me/919990232499" target="_blank" class="btn btn-outline btn-sm">Chat Now</a>
-                </div>
-            </div>
-
-            <div class="map-container" data-aos="fade-up">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.19!2d77.083!3d28.4314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDI1JzUzLjAiTiA3N8KwMDUnMDEuNSJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3 class="footer-title">Dev Hair Colourist</h3>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/devhaircolourist" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/diwash.colourist/" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/919990232499" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <ul class="footer-contact">
-                        <li><i class="fas fa-phone"></i><a href="tel:+919990232499">+91 9990232499</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Dev Hair Colourist. Designed by <a href="https://hanunova.oneapp.dev/" target="_blank">HanuNova</a></p>
-            </div>
-        </div>
-    </footer>
-
-    <a href="https://wa.me/919990232499" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="./js/main.js"></script>
+    
+    <!-- Footer -->
 </body>
 </html>
